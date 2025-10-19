@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ExxonMobil Qatar</title>
+  <meta name="description" content="ExxonMobil Qatar — oil & gas operations, investor relations, contact information. Company shares available for purchase." />
+  <meta name="author" content="ExxonMobil Qatar" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#042243; /* deep navy */
+      --em-red:#ff1f3b; /* ExxonMobil-esque red */
+      --muted:#6b7280;
+      --max-width:1100px;
+      --radius:12px;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;color:#0b1220;background:#ffffff;line-height:1.5}
+    a{color:inherit}
+    header{background:#fff;border-bottom:1px solid #eef2f7;position:sticky;top:0;z-index:60}
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+    /* NAV */
+    .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--navy), #0a6fbf);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px}
+    .site-name{font-weight:700;color:var(--navy)}
+    nav ul{display:flex;gap:18px;list-style:none;padding:0;margin:0}
+    nav a{padding:8px 10px;border-radius:8px;text-decoration:none;color:var(--navy);font-weight:600}
+    nav a:hover, nav a:focus{background:#f3f6fb}
+    .cta-invest{background:var(--em-red);color:#fff;padding:8px 12px;border-radius:8px;font-weight:700}
+
+    /* mobile toggle */
+    .mobile-toggle{display:none;border:0;background:transparent;font-size:20px}
+
+    /* HERO */
+    .hero{padding:56px 0 44px;background:linear-gradient(180deg, rgba(4,34,67,0.04), rgba(255,255,255,0));}
+    .hero-inner{display:grid;grid-template-columns:1fr 420px;gap:32px;align-items:center}
+    .hero-card{background:#fff;padding:28px;border-radius:14px;box-shadow:0 8px 30px rgba(7,18,30,0.06)}
+    .hero h1{margin:0 0 12px;font-size:28px;color:var(--navy)}
+    .tagline{color:var(--muted);margin-bottom:16px}
+    .hero p{margin:0 0 18px;color:#1f2937}
+    .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+    .btn{display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700}
+    .btn-outline{border:2px solid var(--navy);color:var(--navy);background:transparent}
+    .btn-primary{background:var(--em-red);color:#fff}
+    .share-banner{background:rgba(255,31,59,0.06);border:1px solid rgba(255,31,59,0.12);padding:12px;border-radius:10px;color:var(--navy);font-weight:600}
+
+    /* Sections */
+    section{padding:46px 0}
+    h2.section-title{font-size:20px;margin:0 0 12px;color:var(--navy)}
+    p.lead{color:var(--muted);margin:0 0 14px}
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(8,20,40,0.04)}
+    .icon{width:56px;height:56px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#f8fafc;margin-bottom:12px}
+
+    /* Investor section */
+    .invest-grid{display:grid;grid-template-columns:1fr 360px;gap:22px;align-items:start}
+    .invest-cta{background:linear-gradient(90deg,#fff 0,#fff);padding:18px;border-radius:12px;border:1px solid #eef2f7}
+    .invest-badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(4,34,67,0.06);font-weight:700;color:var(--navy);margin-bottom:12px}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:22px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:#111827}
+    input,textarea{width:100%;padding:10px;border:1px solid #e6edf3;border-radius:8px;font-size:14px}
+    textarea{min-height:120px;resize:vertical}
+    .form-actions{display:flex;gap:12px;align-items:center;margin-top:10px}
+
+    footer{background:#f8fafc;padding:22px 0;border-top:1px solid #eef2f7}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .social{display:flex;gap:10px}
+    .legal a{color:var(--muted);text-decoration:none;margin-left:12px}
+
+    /* Modal */
+    .modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,0.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:100}
+    .modal{background:#fff;padding:20px;border-radius:12px;max-width:520px;width:100%;box-shadow:0 12px 40px rgba(2,6,23,0.2)}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero-inner{grid-template-columns:1fr}
+      .invest-grid,.contact-grid{grid-template-columns:1fr}
+      .grid-3{grid-template-columns:1fr}
+      nav ul{display:none}
+      .mobile-toggle{display:block}
+      .mobile-menu{display:none;background:#fff;padding:12px;border-top:1px solid #eef2f7}
+      .hero{padding:28px 0}
+    }
+  </style>
+</head>
+<body>
+  <header role="banner">
+    <div class="container nav">
+      <div class="brand">
+        <div class="logo" aria-hidden>
+              <img src="images/unnamed.jpg" alt="ExxonMobil Qatar Logo" style="height:50px; width:auto;">
+        </div>
+        <div>
+          <div class="site-name">ExxonMobil Qatar</div>
+          <div style="font-size:12px;color:var(--muted)">Qatar</div>
+        </div>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <button class="mobile-toggle" id="mobileToggle" aria-expanded="false" aria-controls="mobileMenu">☰</button>
+        <ul id="mainNav">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#operations">Our Operations</a></li>
+          <li><a href="#investor">Investor Relations</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <a href="#investor" class="cta-invest">Shares Available</a>
+      </div>
+    </div>
+    <div id="mobileMenu" class="mobile-menu container" style="display:none"></div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container hero-inner">
+        <div>
+          <div class="hero-card">
+            <h1>Powering Qatar’s Energy Future</h1>
+            <div class="tagline">ExxonMobil Qatar — committed to safe, responsible and innovative oil & gas operations.</div>
+            <p>ExxonMobil Qatar operates across exploration, production and refining — delivering energy solutions while focusing on sustainability and community development.</p>
+
+            <div class="hero-cta">
+              <a class="btn btn-primary" href="#investor">Learn More About Our Shares</a>
+              <a class="btn btn-outline" href="#operations">View Operations</a>
+            </div>
+
+            <div style="margin-top:16px">
+              <div class="share-banner">Announcement: <strong>ExxonMobil Qatar is currently offering company shares for purchase.</strong></div>
+            </div>
+          </div>
+        </div>
+
+        <div aria-hidden>
+          <div style="border-radius:14px;overflow:hidden">
+            <!-- Decorative panel: a stylized image / illustrative placeholder -->
+            <div style="height:320px;background-image: url(./images/oil2.jpg) ;background-size:cover;background-position:center;display:flex;align-items:flex-end;padding:18px">
+              <div style="background:rgba(255,255,255,0.9);padding:12px;border-radius:10px;max-width:320px">
+                <div style="font-weight:700;color:var(--navy)">Invest with ExxonMobil Qatar</div>
+                <div style="font-size:13px;color:var(--muted);margin-top:6px">Secure, transparent process — get started in our Investor Relations section.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="container" aria-labelledby="aboutTitle">
+      <h2 id="aboutTitle" class="section-title">About Us</h2>
+      <p class="lead">ExxonMobil Qatar is a regional operating unit of ExxonMobil, delivering integrated upstream and downstream energy services. We bring decades of experience in exploration, production and refining, while investing in local communities and environmental stewardship.</p>
+      <div class="grid-3" style="margin-top:18px">
+        <div class="card">
+          <div class="icon" aria-hidden>
+                <img src="images/globe-svgrepo-com.svg" alt="History Icon" width="50" height="50" />
+          </div>
+          <h3 style="margin:0 0 8px">History & Reach</h3>
+          <p style="margin:0;color:var(--muted)">Global scale experience combined with local investment in Qatar’s people and infrastructure.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon" aria-hidden>
+                <img src="images/build-svgrepo-com (2).svg" alt="Safety Icon" width="50" height="50" />
+          </div>
+          <h3 style="margin:0 0 8px">Safety & Sustainability</h3>
+          <p style="margin:0;color:var(--muted)">We prioritize safe operations and support sustainable initiatives that reduce environmental impact.</p>
+        </div>
+
+        <div class="card">  
+          <div class="icon" aria-hidden>
+                <img src="images/community-people-friends-group-svgrepo-com.svg" alt="Community Icon" width="50" height="50" />
+          </div>
+          <h3 style="margin:0 0 8px">Community</h3>
+          <p style="margin:0;color:var(--muted)">Local employment, education programs and partnerships to support long-term development.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="operations" class="container" aria-labelledby="opsTitle">
+      <h2 id="opsTitle" class="section-title">Our Operations</h2>
+      <p class="lead">We operate across offshore exploration, natural gas production, transportation, and refining. Below are highlights of our activity in Qatar.</p>
+
+      <div style="display:grid;gap:14px;margin-top:16px">
+        <div class="card">
+          <h3 style="margin:0 0 8px">Offshore Exploration</h3>
+          <p style="margin:0;color:var(--muted)">Advanced seismic surveys and responsible drilling techniques support our exploration activities.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px">Pipelines & Logistics</h3>
+          <p style="margin:0;color:var(--muted)">Integrated logistics and pipelines ensure safe and efficient transport to refining and export terminals.</p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 8px">Refining & Shipping</h3>
+          <p style="margin:0;color:var(--muted)">State-of-the-art refining paired with strict quality and safety controls for domestic and international markets.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="investor" class="container" aria-labelledby="invTitle">
+      <h2 id="invTitle" class="section-title">Investor Relations</h2>
+      <p class="lead">ExxonMobil Qatar is making a limited offering of company shares. We are committed to transparent communication and a straightforward investment process.</p>
+
+      <div class="invest-grid" style="margin-top:16px">
+        <div>
+          <div class="invest-cta">
+            <div class="invest-badge">Shares Offering</div>
+            <h3 style="margin-top:6px">Details</h3>
+            <p style="color:var(--muted)">This offering is open to qualified investors. For full terms, documentation, and to request investor materials, please contact our Investor Relations team or use the Invest Now form.</p>
+            <ul style="color:var(--muted)">
+              <li>Offering: Company equity shares</li>
+              <li>Region: Qatar</li>
+              <li>Contact: exxonmobilqatarshares@gmail.com</li>
+            </ul>
+            <div style="margin-top:12px">
+              <button class="btn btn-primary" id="openInvest">Invest Now</button>
+              
+            </div>
+          </div>
+        </div>
+
+        <aside style="background:#fff;padding:16px;border-radius:12px;border:1px solid #eef2f7">
+          <h4 style="margin:0 0 8px">Investor FAQ</h4>
+          <p style="margin:0;color:var(--muted)">How do I apply? Click "Invest Now" and complete the form. A member of our Investor Relations team will respond with next steps and required documentation.</p>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div style="display:flex;flex-direction:column">
+        <div style="font-weight:700">ExxonMobil Qatar</div>
+        <div style="font-size:13px;color:var(--muted)">© ExxonMobil Qatar 2025</div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:14px">
+        <div class="legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Use</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal markup -->
+  <div id="modalBackdrop" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal" role="document" aria-labelledby="modalTitle">
+      <h3 id="modalTitle">Invest Now</h3>
+      <p style="color:var(--muted)">Complete this form and our Investor Relations team will contact you with offering documents and next steps.</p>
+      <form id="investForm" style="margin-top:12px">
+        <label for="invName">Full name</label>
+        <input id="invName" name="invName" required />
+
+        <label for="invEmail" style="margin-top:8px">Email</label>
+        <input id="invEmail" name="invEmail" type="email" required />
+
+        <label for="invMessage" style="margin-top:8px">Message / Interest</label>
+        <textarea id="invMessage" name="invMessage"></textarea>
+
+        <div class="form-actions" style="margin-top:12px">
+          <button type="submit" class="btn btn-primary">Submit Interest</button>
+          <button type="button" id="closeModal" class="btn btn-outline">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Mobile nav toggle
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mainNav = document.getElementById('mainNav');
+    mobileToggle.addEventListener('click', ()=>{
+      const expanded = mobileToggle.getAttribute('aria-expanded') === 'true';
+      mobileToggle.setAttribute('aria-expanded', String(!expanded));
+      if(!expanded){
+        mobileMenu.style.display = 'block';
+        mobileMenu.innerHTML = mainNav.outerHTML;
+      } else {
+        mobileMenu.style.display = 'none';
+        mobileMenu.innerHTML = '';
+      }
+    });
+
+    // Smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target){
+          e.preventDefault();
+          target.scrollIntoView({behavior:'smooth',block:'start'});
+          // close mobile menu when link clicked
+          if(window.innerWidth <= 900){ mobileMenu.style.display='none'; mobileToggle.setAttribute('aria-expanded','false'); }
+        }
+      });
+    });
+
+    // Modal behavior
+    const openInvest = document.getElementById('openInvest');
+    const modalBackdrop = document.getElementById('modalBackdrop');
+    const closeModal = document.getElementById('closeModal');
+    openInvest.addEventListener('click', ()=>{
+      modalBackdrop.style.display = 'flex';
+      modalBackdrop.setAttribute('aria-hidden','false');
+      document.getElementById('invName').focus();
+    });
+    closeModal.addEventListener('click', ()=>{
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+    });
+
+    // Simple form handlers (demo-only — replace with backend integration)
+    document.getElementById('contactForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thank you, ' + this.name.value + '. Your message has been recorded (demo).');
+      this.reset();
+    });
+
+    document.getElementById('subscribeForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Subscribed with ' + this.subEmail.value + ' (demo).');
+      this.reset();
+    });
+
+    document.getElementById('investForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      alert('Thank you. Your investment interest has been submitted (demo).');
+      modalBackdrop.style.display = 'none';
+      modalBackdrop.setAttribute('aria-hidden','true');
+      this.reset();
+    });
+
+    // Accessibility: close modal with Escape
+    document.addEventListener('keydown', e =>{
+      if(e.key === 'Escape'){
+        if(modalBackdrop.style.display === 'flex'){
+          modalBackdrop.style.display = 'none';
+          modalBackdrop.setAttribute('aria-hidden','true');
+        }
+      }
+    });
+  </script>
+</body>
+</html>
